@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/main.css">
+    <title>Task Cart</title>
+    <style>
+        .completed {
+            text-decoration: line-through;
+            text-decoration-color: blueviolet;
+            text-decoration-thickness: 2px;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="header">
+        <h1 class="head">Work Side</h1>
+    </div>
+
+  <div class="full">
+    <!-- <div class="day">
+      <h1><%=kindOfDay%></h1>
+    </div> -->
+     
+      <!-- <% if(kindOfDay == "Saturday" || kindOfDay == "Sunday"){ %>
+        <h1 style="color: chartreuse;"><%= kindOfDay %> List</h1>
+      <%  }  else{ %>
+            <h1 style="color: red;"><%= kindOfDay %> List</h1>
+       <% } %> -->
+    
+    <div class="center">
+      <ul>
+        <!-- <li>Buy Food</li>
+        <li>Cook Food</li>
+        <li>Eat Food</li> -->
+        
+       <% for(var i=0;i<newlistitems.length;i++) { %>
+        <li class="list"><input type="checkbox" class="check"><%= newlistitems[i] %>😊 </li>
+        <%}%>
+      </ul>
+    </div>
+    
+    <div class="input">
+      <form action="/work" method="post">
+      <input type="text" name="newItem" class="txt" placeholder="Type Your Task 📝">
+      <button type="submit" class="submit" name="button">+</button>
+    </form>
+    </div>
+  </div>
+  <script>
+    // Add an event listener to the checkboxes
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', (event) => {
+            const listItem = event.target.parentNode;
+            if (event.target.checked) {
+                listItem.classList.add('completed');
+            } else {
+                listItem.classList.remove('completed');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
